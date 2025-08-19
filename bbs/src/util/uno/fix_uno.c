@@ -35,7 +35,7 @@ typedef struct
 /*-------------------------------------------------------*/
 
 
-static int
+static void
 new_acct(userid)
   char *userid;
 {

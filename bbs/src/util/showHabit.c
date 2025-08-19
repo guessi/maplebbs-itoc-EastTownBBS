@@ -71,7 +71,7 @@ main()
    closedir(dirp);
  }
  if (!(fp = fopen(OUTFILE_HABIT, "w")))
-   return;
+   return 1;
  fprintf(fp, "全站人數：%d\n\n", totaluser);
  
  for (i = 0; i <= 31; i++)

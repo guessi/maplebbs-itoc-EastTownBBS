@@ -64,14 +64,14 @@ a_show_from()
   if (vans("琌琩高ㄏノㄓ方 Y)琩高 N)瞒秨 [N] ") == 'y') /* guessi.060612 璶―块 */
   {
     if (!vget(b_lines, 0, "瞶パ:", why, 64, DOECHO))
-      return;
+      return XEASY;
     sprintf(buf, "琩ㄏノㄓ方 瞶パ: %s ", why);
     alog("琩高ㄓ方", buf);
   }
   else
   {
     alog("琩高ㄓ方", "");
-    return; /* guessi.060612 铬魁笆 */
+    return XEASY; /* guessi.060612 铬魁笆 */
   }
 
   move(1, 0);
@@ -98,7 +98,7 @@ a_show_from()
       return 0;
     }
   }
-  return;
+  return XEASY;
 }
 
 int
