@@ -19,7 +19,7 @@
 
 #if 0	/* itoc.010803.註解:螢幕配置 */
 
-最前面      一些資料顯示
+最\前面      一些資料顯示
 
 中間        圖
 
@@ -199,7 +199,7 @@ show_badman_pic(i)		/* 怪物 */
   char buf[64];
 
 /* itoc.010731:  picabc   abc 是編號
-   百位數 a 是分類，十位數個位數 bc 是該類圖的編號 */
+   百位數 a 是分類，十位數個位數 bc 是該類圖的編號 */
 
   sprintf(buf, PIP_PICHOME "badman/pic%03d", i);
   return show_file(buf, 7, 10);

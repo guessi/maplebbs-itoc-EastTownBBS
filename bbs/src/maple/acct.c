@@ -754,7 +754,7 @@ set_perm:
 
 #if 0    /* itoc.010831.註解 */
 
-  因為線上 cuser.userlevel 並不是最新的，使用者如果在線上認證或是被停權，
+  因為線上 cuser.userlevel 並不是最\新的，使用者如果在線上認證或是被停權，
   硬碟中的 .ACCT 寫的才是正確的 userlevel，
   所以要先讀出 .ACCT，加入 level 後再蓋回去。
 

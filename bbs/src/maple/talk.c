@@ -570,8 +570,8 @@ talk_speak(fd)
   所以我們必須要先把自己打的字與對方打的字分開來.
 
   於是就先建兩個 spool, 分別將 mywin/itswin recv 的 char 往各自的 spool
-  裡丟, 目前設 spool 剛好是一行的大小, 所以只要是 spool 滿了, 或是碰到換
-  行字元, 就把 spool 裡的資料寫回 log, 然後清掉 spool, 如此繼續 :)
+  裡\丟, 目前設 spool 剛好是一行的大小, 所以只要是 spool 滿了, 或是碰到換
+  行字元, 就把 spool 裡\的資料寫回 log, 然後清掉 spool, 如此繼續 :)
 #endif
 
   /* lkchu: make sure that's empty */

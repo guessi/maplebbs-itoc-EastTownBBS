@@ -2273,12 +2273,12 @@ chat_bye(cu, msg)
   1. 注意按字母排列。
   2. 請愛用全形標點符號。
   3. 三類 action 不能有重覆。
-  4. 由於 action 採用「部分比對」，故最好不要有指令包含另一指令所有關鍵字的狀況。
+  4. 由於 action 採用「部分比對」，故最\好不要有指令包含另一指令所有關鍵字的狀況。
      （例如 fire/fireball，kiss/kissbye，no/nod，tea/tear/tease，drive/drivel，love/lover）
      （有這樣的情形也不會怎麼樣，只是使用者容易搞混）
   5. 由於 action 部分比對至少 2 bytes，故不要用 //1 //2 這類只有一個字的 action。
   6. 由於 action 採用部分比對，故指令不必用縮寫。
-  7. 統一 action message 最後不要加句點。
+  7. 統一 action message 最\後不要加句點。
   8. 修正錯字。（是 adore，不是 aodre 啊 :p）
   9. 減少重覆的字眼。（不要老是「死去活來」啊 :p）
 #endif
@@ -2534,7 +2534,7 @@ static ChatAction party_data[ACTNUM_PARTY] =
     "mail", "打包", "把", "打包遞送到大陸"
   },
   {
-    "marry", "求婚", "捧著九百九十九朵玫瑰向", "求婚"
+    "marry", "求婚", "捧著九百九十九朵玫瑰向", "求婚"
   },
   {
     "morning", "早安", "對", "說『早安』"

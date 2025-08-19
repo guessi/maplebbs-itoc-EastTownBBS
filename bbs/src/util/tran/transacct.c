@@ -21,7 +21,7 @@
 
   2. 請自行改 struct NEW 和 struct OLD
 
-  3. 依不同的 NEW、OLD 來改 trans_acct()。
+  3. 依\不同的 NEW、OLD 來改 trans_acct()。
 
 #endif
 

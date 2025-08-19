@@ -52,10 +52,10 @@ extern char xo_pool[];
   所記錄的位置從 xo->dir 抄到 xo_pool[]。
 
   當增加條件做二次搜尋時，此時不需要掃整個 xo->dir 內的所有 HDR，只瀏覽記錄在
-  xpostIndex[] 裡面的那些。由於二次搜尋時要看同一個 xo->dir，所以 every_Z 時
+  xpostIndex[] 裡\面的那些。由於二次搜尋時要看同一個 xo->dir，所以 every_Z 時
   要禁止進入 XZ_XPOST 二次。
 
-  已知問題是：當使用者還在 XZ_XPOST 裡面時，若 xo->dir 的順序有異動時 (例如刪除)，
+  已知問題是：當使用者還在 XZ_XPOST 裡\面時，若 xo->dir 的順序有異動時 (例如刪除)，
   而使用者要求 xpick_pick() 時 (例如翻頁、二次搜尋)，由於 xpostIndex[] 記錄的是在 
   xo->dir 的位置，此時結果會出錯。
 

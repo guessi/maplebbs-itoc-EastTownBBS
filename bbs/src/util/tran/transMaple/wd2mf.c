@@ -13,7 +13,7 @@
 #if 0
 
    1. 修改 transmf()
-   2. 轉換(看板)好友名單之前，您必須先轉換完看板及使用者。
+   2. 轉換(看板)好友\名單之前，您必須先轉換完看板及使用者。
 
    ps. 使用前請先行備份，use on ur own risk. 程式拙劣請包涵 :p
    ps. 感謝 lkchu 的 Maple 3.02 for FreeBSD

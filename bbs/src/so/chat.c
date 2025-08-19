@@ -524,7 +524,7 @@ t_chat()
 #ifdef CHAT_SECURE	/* Thor.980729: secured chat room */
 
 #if 0
-    作者  opus (人生有味是清歡)                                站內 sysopplan
+    作者  opus (人生\有味是清歡)                                站內 sysopplan
     標題  Re: 關於 chatroom
     時間  Wed Jul 30 03:14:56 1997
     ─────────────────────────────────────
@@ -537,7 +537,7 @@ t_chat()
     > 另外, ACCT 中的 passwd 是PASSLEN自動補空白還是要手動加?
     > 會自動補滿嗎?
 
-    Unix 的 crypt 最多只取前 14 個字, 所以不加亦可。
+    Unix 的 crypt 最\多只取前 14 個字, 所以不加亦可。
     這個地方 參照 user login 的地方寫就好了。
 
     --

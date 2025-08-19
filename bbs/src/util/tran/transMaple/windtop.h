@@ -24,7 +24,7 @@
      @apply @e-mail @goodbye @index @justify @newuser @opening.0
      @opening.1 @opening.2 @post @re-reg @tryout @welcome
             
-  6. 上 BBS 站，在 (A)nnounce 裡面，建以下二個卷宗的所有資料
+  6. 上 BBS 站，在 (A)nnounce 裡\面，建以下二個卷宗的所有資料
      {話題} 熱門討論
      {排行} 統計資料
 

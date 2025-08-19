@@ -16,7 +16,7 @@
 
    1. 修改 struct userec 及 creat_dirs()
       (userec 兩版定義的字串長度不一，請自行換成數字)
-   2. 除 plans 檔名，好友名單、暫存檔等都不轉換
+   2. 除 plans 檔名，好友\名單、暫存檔等都不轉換
    3. Sob 有九個簽名檔，只轉前三個
    4. 信箱中的 internet mail 如有需要請先 chmod 644 `find PATH -perm 600`
 

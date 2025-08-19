@@ -18,11 +18,11 @@
   這個程式是拿來給 bbs 版本轉換時，自動建立 @Class 用的。
   或是在誤砍分類時，也可以拿出來重建 @Class 用。
 
-  假設要把所有分類為「系統」和「站內」的看板都放在「BBS」這個分類裡面，
-  以及把所有分類為「個人」的看板都放在「Personal」這個分類裡面。
+  假設要把所有分類為「系統」和「站內」的看板都放在「BBS」這個分類裡\面，
+  以及把所有分類為「個人」的看板都放在「Personal」這個分類裡\面。
   
-  1. 上 BBS 站，在 (A)nnounce/Class 裡面 Ctrl+P 選 (C)，建立檔名為 BBS 的分類 (標題任意)。
-  2. 上 BBS 站，在 (A)nnounce/Class 裡面 Ctrl+P 選 (C)，建立檔名為 Personal 的分類 (標題任意)。
+  1. 上 BBS 站，在 (A)nnounce/Class 裡\面 Ctrl+P 選 (C)，建立檔名為 BBS 的分類 (標題任意)。
+  2. 上 BBS 站，在 (A)nnounce/Class 裡\面 Ctrl+P 選 (C)，建立檔名為 Personal 的分類 (標題任意)。
   3. 在工作站中以 bbs 身分執行
      % ~bbs/src/util/tran/brd2gem 系統 BBS
      % ~bbs/src/util/tran/brd2gem 站內 BBS

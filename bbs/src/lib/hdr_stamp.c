@@ -16,16 +16,16 @@
 
 #if 0	/* itoc.030303.註解: 簡易說明 */
 
-  hdr_stamp() 會做出一個新的 HDR，依傳入的 token 不同而有差異：
+  hdr_stamp() 會做出一個新的 HDR，依\傳入的 token 不同而有差異：
 
    0 : 新增一篇信件(family 是 @)，回傳的 fpath 是 hdr 所指向
-       和 hdr_fpath(fpath, folder, hdr); 所產生的 fpath 相同
+       和 hdr_fpath(fpath, folder, hdr); 所產生\的 fpath 相同
 
   'A': 新增一篇文章(family 是 A)，回傳的 fpath 是 hdr 所指向
-       和 hdr_fpath(fpath, folder, hdr); 所產生的 fpath 相同
+       和 hdr_fpath(fpath, folder, hdr); 所產生\的 fpath 相同
 
   'F': 新增一個卷宗(family 是 F)，回傳的 fpath 是 hdr 所指向
-       和 hdr_fpath(fpath, folder, hdr); 所產生的 fpath 相同
+       和 hdr_fpath(fpath, folder, hdr); 所產生\的 fpath 相同
 
   HDR_LINK      : fpath 已有舊檔案時，要複製舊檔案到新信件(family 是 @) 去
                   並將 hdr 指向這篇新信件，回傳的 fpath 是原來舊檔案
