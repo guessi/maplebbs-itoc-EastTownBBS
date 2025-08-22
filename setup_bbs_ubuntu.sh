@@ -17,7 +17,7 @@ sleep 10
 DIR=`cd $(dirname $0); pwd`
 GITSRC="git://github.com/guessi/easttownbbs.git"
 BBSUID="9999"
-BBSGID="9999"
+BBSGID="999"
 USER="bbs"
 GROUP="bbs"
 BBSHOME="/home/bbs"
