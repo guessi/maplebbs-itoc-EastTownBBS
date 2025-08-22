@@ -579,11 +579,10 @@ main_chessmj()
   int mo;			/* 1:已摸牌 0:未摸牌 */
   int picky;			/* 1:撿別人的牌 0:自己摸的 */
   int pickup;
-  int listen;			/* 1:聽牌 0:沒有聽牌 */
   int chesslist[32];		/* 32 張牌組 */
 
   int i, j, k, m;
-  int jp, x, xx, ch, z;
+  int jp, xx, ch, z;
 
   char ans[10], msg[40];
   int tmp[4];
@@ -628,7 +627,6 @@ main_chessmj()
     mo = 0;
     pickup = 0;
     picky = 0;
-    listen = 0;
     flag = 0;
     tflag = 0;
 
@@ -660,7 +658,6 @@ main_chessmj()
     for (;;)
     {
       jp = 5;
-      x = 0;
       z = 1;
       move(18, 26);
       do
@@ -843,7 +840,6 @@ main_chessmj()
 	  tmp[3] = throw[tflag - 1];	/* 把撿起那張跟手上的牌比對 */
 	  if (testlisten(tmp))
 	  {			/* 撿牌有聽的話 */
-	    listen = 1;
 	    host_card[4] = throw[tflag - 1];
 	    throw[tflag - 1] |= 0x80;
 	    print_sign(1);	/* 印撿牌符號 */
@@ -915,8 +911,7 @@ main_chessmj()
 	  }
 	  tmp[3] = host_card[4];
 	  if (testlisten(tmp))
-	  {			/* 摸牌有聽的話 */
-	    listen = 1;
+	  {
 	    xx = i;		/* 紀錄下要丟的那張牌 */
 	    break;		/* 跳出 i loop */
 	  }
@@ -935,8 +930,6 @@ main_chessmj()
 
       host_card[4] = 0;
       pickup = 0;
-      listen = 0;
-
     }		/* for 迴圈結束 */
 
 next_game:

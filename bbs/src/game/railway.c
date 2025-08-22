@@ -512,8 +512,8 @@ http_conn(server, s)
   char *server;
   char *s;
 {
-  int sockfd, start_show;
-  int cc, tlen;
+  int sockfd;
+  int cc;
   char *xhead, *xtail, src[30], dst[30];
   static char pool[2048];
   FILE *fp;
@@ -533,8 +533,6 @@ http_conn(server, s)
   /* parser return message from web server */
   xhead = pool;
   xtail = pool;
-  tlen = 0;
-  start_show = 0;
 
   sprintf(src, "tmp/%s.rail", cuser.userid);
 
