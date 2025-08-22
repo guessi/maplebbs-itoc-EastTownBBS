@@ -966,17 +966,8 @@ out_extra(fpw)
         "    <a href=\"/home\" title=\"(快速鍵 m)\">[ 回到首頁 ]</a>\n"
         "  </div>\n", fpw); /* end of #footer */
 
-  fputs("  <div id=\"share\">\n"
-        "    <span>[ 分享 ]</span>\n"
-        "    <div class=\"hidden\">\n"
-        "      <div class=\"plurk-share\"></div>\n"
-        "      <div class=\"g-plusone\"></div>\n"
-        "      <div class=\"fb-like\" data-href=\"" OG_URL "\" data-layout=\"button_count\" data-send=\"false\" data-width=\"80\"></div>\n"
-        "    </div>\n"
-        "  </div>\n"
-        "  <div id=\"message\"><a href=\"#top\">回到頁首</a></div>\n"
+  fputs("  <div id=\"message\"><a href=\"#top\">回到頁首</a></div>\n"
         "  <script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></script>\n"
-        "  <script type=\"text/javascript\" src=\"https://apis.google.com/js/plusone.js\"></script>\n"
         "  <script type=\"text/javascript\" src=\"link?script.min.js\"></script>\n", fpw);
 }
 

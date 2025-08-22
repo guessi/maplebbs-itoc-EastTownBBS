@@ -213,20 +213,6 @@ img {
   width: 100%;
 }
 
-/* misc */
-
-.plurk-share {
-  display: inline-block;
-  font-size: 12pt !important;
-  color: #AAA;
-  padding: 3px;
-  cursor: pointer;
-}
-
-.g-plusone {
-  vertical-align: middle !important;
-}
-
 /* extra */
 #message a {
   display: block;
