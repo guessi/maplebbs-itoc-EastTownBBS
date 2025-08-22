@@ -52,7 +52,6 @@
 /* ----------------------------------------------------- */
 
 #define HAVE_OPENGRAPH
-#define HAVE_GOOGLE_ANALYTICS
 #define HAVE_PERMANENT_LINK
 
   /* ------------------------------------------------- */
