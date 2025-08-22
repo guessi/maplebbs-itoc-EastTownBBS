@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/debian:12-slim
+FROM public.ecr.aws/docker/library/debian:13-slim
 
 RUN apt update \
  && apt install -y \
