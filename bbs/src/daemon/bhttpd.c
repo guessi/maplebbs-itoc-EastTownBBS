@@ -910,8 +910,8 @@ out_title(fpw, header, url, title, parameter)
                "  <meta property=\"og:type\" content=\"" OG_TYPE "\" />\n", og_title, url, strlen(parameter) > 0 ? "&amp;" : "", parameter);
 #endif
 
-    fputs("  <link rel=\"stylesheet\" href=\"link?style.min.css\" type=\"text/css\">\n"
-          "  <link rel=\"stylesheet\" href=\"link?color.min.css\" type=\"text/css\">\n"
+    fputs("  <link rel=\"stylesheet\" href=\"link?style.css\" type=\"text/css\">\n"
+          "  <link rel=\"stylesheet\" href=\"link?color.css\" type=\"text/css\">\n"
           "  <link rel=\"icon\" href=\"link?favicon.ico\">\n"
           "</head>\n"
           "<body>\n"
@@ -968,7 +968,7 @@ out_extra(fpw)
 
   fputs("  <div id=\"message\"><a href=\"#top\">¦^¨ì­¶­º</a></div>\n"
         "  <script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n"
-        "  <script type=\"text/javascript\" src=\"link?script.min.js\"></script>\n", fpw);
+        "  <script type=\"text/javascript\" src=\"link?script.js\"></script>\n", fpw);
 }
 
 
