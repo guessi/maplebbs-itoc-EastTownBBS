@@ -26,25 +26,25 @@ all:
 	@echo " make cygwin  : for Microsoft Windows and Cygwin gcc"
 
 sun:
-	@$(MAKE) CC=gcc CFLAGS="-O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -I../include" LDFLAGS="-s -L../lib -ldao" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao" $(EXE)
 
 linux:
-	@$(MAKE) CC=gcc CFLAGS="-DLINUX -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused" LDFLAGS="-s -L../lib -ldao -lcrypt -lresolv" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DLINUX -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration" LDFLAGS="-s -L../lib -ldao -lcrypt -lresolv" $(EXE)
 
 solaris:
-	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused" LDFLAGS="-s -L../lib -ldao -lsocket -lresolv -lnsl -L/usr/ucblib -lucb -R/usr/ucblib" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration" LDFLAGS="-s -L../lib -ldao -lsocket -lresolv -lnsl -L/usr/ucblib -lucb -R/usr/ucblib" $(EXE)
 
 sol-x86:
-	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -O2 -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused" LDFLAGS="-s -L../lib -ldao -lsocket -lresolv -lnsl" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -O2 -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration" LDFLAGS="-s -L../lib -ldao -lsocket -lresolv -lnsl" $(EXE)
 
 freebsd:
-	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused" LDFLAGS="-s -L../lib -ldao -lcrypt" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration" LDFLAGS="-s -L../lib -ldao -lcrypt" $(EXE)
 
 bsd:
-	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused" LDFLAGS="-s -L../lib -ldao" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration" LDFLAGS="-s -L../lib -ldao" $(EXE)
 
 cygwin:
-	@$(MAKE) CC=gcc CFLAGS="-DLINUX -DCYGWIN -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused" LDFLAGS="-s -L../lib -ldao -lcrypt -lresolv -lcygipc" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DLINUX -DCYGWIN -O2 -pipe -I../include -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration" LDFLAGS="-s -L../lib -ldao -lcrypt -lresolv -lcygipc" $(EXE)
 
 
 .c:	;  $(CC) -o $@ $@.c $(CFLAGS) $(LDFLAGS)
