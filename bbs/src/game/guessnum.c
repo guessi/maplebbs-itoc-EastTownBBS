@@ -119,6 +119,8 @@ finish(msg)
   vmsg(msg);
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-int"
 valid_guess(num) 
   char *num; 
 { 
@@ -135,6 +137,7 @@ valid_guess(num)
   } 
   return 0; 
 } 
+#pragma GCC diagnostic pop
 
 static int 
 mainNum(fighting)

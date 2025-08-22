@@ -825,6 +825,8 @@ typedef struct
 }      KeyMap;
 
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
 static KeyMap keymap[] =
 {
   /* search title / author */
@@ -876,6 +878,7 @@ static KeyMap keymap[] =
 
   (int) NULL, -1
 };
+#pragma GCC diagnostic pop
 
 
 static int
@@ -1652,8 +1655,11 @@ every_U(zone)
   {
     int tmpmode;
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-int"
     extern pickup_way;
     int tmpway = pickup_way;
+#pragma GCC diagnostic pop
 
     if (bbsmode == M_READA)
       pickup_way = 3;

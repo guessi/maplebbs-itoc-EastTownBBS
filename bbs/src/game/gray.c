@@ -216,6 +216,8 @@ countSW(x, y, tile)
 }
 
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-int"
 static int 		/* 總共可以吃幾子 0: 不能吃 */
 do_count(x, y, tile)
 {
@@ -225,6 +227,7 @@ do_count(x, y, tile)
   return countN(x, y, tile) + countS(x, y, tile) + countE(x, y, tile) + countW(x, y, tile) + 
     countNE(x, y, tile) + countNW(x, y, tile) + countSE(x, y, tile) + countSW(x, y, tile);
 }
+#pragma GCC diagnostic pop
 
 
 /* void eat##(x, y, tile, num) */
@@ -362,6 +365,8 @@ eatSW(x, y, tile, num)
 }
 
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-int"
 static void
 do_eat(x, y, tile)
 {
@@ -379,6 +384,7 @@ do_eat(x, y, tile)
   map[x][y] = tile;
   mouts(x, y, tile);
 }
+#pragma GCC diagnostic pop
 
 
 /* 評分制度，很粗淺的人工智慧，待改善 */

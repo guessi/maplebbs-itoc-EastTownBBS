@@ -83,6 +83,8 @@ can_override(up)
 }
 
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 int			/* 1:可看見 0:不可看見 */
 can_see(my, up)
   UTMP *my;
@@ -125,6 +127,7 @@ can_see(my, up)
 
   return 1;
 }
+#pragma GCC diagnostic pop
 
 
 int
