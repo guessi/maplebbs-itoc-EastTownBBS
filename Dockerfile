@@ -45,3 +45,7 @@ WORKDIR ${BBSHOME}
 USER root
 
 RUN chown -R bbs:bbs ${BBSHOME}
+
+ADD docker-entrypoint.sh .
+
+CMD ["./docker-entrypoint.sh"]
