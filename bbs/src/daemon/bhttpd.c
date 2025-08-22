@@ -967,7 +967,7 @@ out_extra(fpw)
         "  </div>\n", fpw); /* end of #footer */
 
   fputs("  <div id=\"message\"><a href=\"#top\">¦^¨ì­¶­º</a></div>\n"
-        "  <script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></script>\n"
+        "  <script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n"
         "  <script type=\"text/javascript\" src=\"link?script.min.js\"></script>\n", fpw);
 }
 
