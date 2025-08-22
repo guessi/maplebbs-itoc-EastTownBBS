@@ -2,27 +2,36 @@
 
 `MapleBBS-3.10-itoc-EastTown` is a project frok from `MapleBBS-3.10-itoc`
 
-# Tested Environments
+## Supported Environment
 
-* `Ubuntu Server 12.04.5 LTS`
-* `CentOS 6.6 Final`
-* `FreeBSD 8.4R`
+* `Debian 13 (trixie)`
 
-# Quick Start Guide
+## Quick Start Guide
 
+On your host machine:
+
+```bash
+docker build -t easttownbbs .
 ```
-vagrant up && vagrant reload
+
+```bash
+docker run --rm -p 2323:23 -p 8080:80 -it easttownbbs
 ```
 
+Inside the docker:
+
+```bash
+./bootstrap.sh
 ```
+
+On your host machine:
+
+```bash
 telnet 127.0.0.1 23
 ```
 
-# Copyright
+With your browser:
 
-* `MapleBBS-3.10-itoc`: itoc (itoc.bbs@cpu.tfcis.org)
-* `MapleBBS-3.10-itoc-EastTown`: guessi (guessi@gmail.com)
-
-# License
-
-* (TBD)
+```
+http://127.0.0.1:8080
+```
