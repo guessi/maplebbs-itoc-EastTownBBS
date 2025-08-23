@@ -1,25 +1,10 @@
-FROM public.ecr.aws/docker/library/debian:13-slim
+FROM public.ecr.aws/docker/library/debian:13-slim AS base
 
 RUN apt update \
- && apt install -y \
-      bsdextrautils \
-      build-essential \
-      curl \
-      file \
+ && apt install -y --no-install-recommends \
       gcc \
-      git \
-      htop \
-      libc6 \
       libc6-dev \
       make \
-      net-tools \
-      openssl \
-      procps \
-      strace \
-      telnet \
-      tree \
-      vim \
-      wget \
   && apt clean -y
 
 ENV BBSUID="9999" \
@@ -33,13 +18,14 @@ RUN groupadd -g ${BBSGID} ${BBSGROUP} \
  && groupmod -g ${BBSGID} ${BBSGROUP} \
  && useradd -m -u ${BBSUID} -g ${BBSGROUP} -s /bin/bash -p $(tr -dc A-Za-z0-9 </dev/urandom | head -c 16; echo) ${BBSUSER}
 
-ADD ./bbs ${BBSHOME}
-RUN chown -R bbs:bbs ${BBSHOME}
+FROM base
+
+ADD --chown=bbs:bbs ./bbs ${BBSHOME}
 
 USER bbs
 
 WORKDIR ${BBSHOME}/src
-RUN make clean linux install
+RUN make linux install clean
 
 WORKDIR ${BBSHOME}
 USER root
