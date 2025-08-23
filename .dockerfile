@@ -1,4 +1,3 @@
-.vagrant
 *.log
 *.o
 *.a

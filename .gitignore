@@ -55,5 +55,4 @@ dkms.conf
 *.dwo
 
 # Misc.
-.vagrant
 *.log
