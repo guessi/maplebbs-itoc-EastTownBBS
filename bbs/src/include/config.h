@@ -408,8 +408,8 @@
    3) 改以下的 *_PORT 及 *_KEY 和另一個 bbs 不同 (例如都加上 10000)
 */
 
-#define MAX_BBSDPORT	2               /* bbsd 要開幾個 port*/
-#define BBSD_PORT	{23, 443}	/* bbsd   所用的 port (bbsd.c) */
+#define MAX_BBSDPORT	1		/* bbsd 要開幾個 port，隨 BBSD_PORT 而變 */
+#define BBSD_PORT	{23 /*,3456*/}	/* bbsd   所用的 port (bbsd.c) */
 #define BMTA_PORT	25		/* SMTP   所用的 port (bmtad.c) */
 #define GEMD_PORT	70		/* Gopher 所用的 port (gemd.c) */
 #define FINGER_PORT	79		/* Finger 所用的 port (bguard.c) */
