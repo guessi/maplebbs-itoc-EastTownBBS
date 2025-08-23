@@ -1,9 +1,13 @@
 FROM public.ecr.aws/docker/library/debian:13-slim AS base
 
-RUN apt update \
+# special notes for i386 system
+# - https://www.debian.org/releases/stable/release-notes/issues.en.html#reduced-support-for-i386
+
+RUN dpkg --add-architecture i386 \
+ && apt update \
  && apt install -y --no-install-recommends \
-      gcc \
-      libc6-dev \
+      gcc-multilib \
+      libc6-dev:i386 \
       make \
   && apt clean -y
 

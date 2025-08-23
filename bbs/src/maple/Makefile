@@ -34,29 +34,29 @@ all:
 	@echo " make cygwin  : for Microsoft Windows and Cygwin gcc"
 
 sun:
-	@$(MAKE) CC=gcc CFLAGS="-O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -Wl,-melf_i386" $(EXE)
 
 linux:
-	@$(MAKE) CC=gcc CFLAGS="-DLINUX -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -lcrypt -lresolv -ldl -rdynamic" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DLINUX -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -Wl,-melf_i386 -lcrypt -lresolv -ldl -rdynamic" $(EXE)
 
 solaris:
-	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -ltermcap -lsocket -lnsl -lresolv -lelf -ldl" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -Wl,-melf_i386 -ltermcap -lsocket -lnsl -lresolv -lelf -ldl" $(EXE)
 
 sol-x86:
-	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -O2 -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -ltermcap -lsocket -lnsl -lresolv -lelf -ldl" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -m32 -O2 -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -Wl,-melf_i386 -ltermcap -lsocket -lnsl -lresolv -lelf -ldl" $(EXE)
 
 freebsd:
-	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -lcrypt -export-dynamic" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -Wl,-melf_i386 -lcrypt -export-dynamic" $(EXE)
 
 bsd:
-	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -Wl,-melf_i386" $(EXE)
 
 cygwin:
-	@$(MAKE) CC=gcc CFLAGS="-DLINUX -DCYGWIN -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -lcrypt -lresolv -lcygipc" $(EXE)
+	@$(MAKE) CC=gcc CFLAGS="-DLINUX -DCYGWIN -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include" LDFLAGS="-s -L../lib -ldao -Wl,-melf_i386 -lcrypt -lresolv -lcygipc" $(EXE)
 
 
 bbsd: $(OBJ)
-	$(CC) -o $@ $(OBJ) $(LDFLAGS)
+	$(CC) -m32 -o $@ $(OBJ) $(LDFLAGS)
 
 
 install: $(EXE)

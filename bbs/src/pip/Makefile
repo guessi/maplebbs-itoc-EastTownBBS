@@ -32,29 +32,29 @@ all:
 	@echo " make cygwin  : for Microsoft Windows and Cygwin gcc"
 
 sun:
-	@$(MAKE) CC=gcc CFLAGS="-O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
+	@$(MAKE) CC=gcc CFLAGS="-m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
 
 linux:
-	@$(MAKE) CC=gcc CFLAGS="-DLINUX -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
+	@$(MAKE) CC=gcc CFLAGS="-DLINUX -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
 
 solaris:
-	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
+	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
 
 sol-x86:
-	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -O2 -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
+	@$(MAKE) CC=gcc CFLAGS="-DSOLARIS -DSYSV -m32 -O2 -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
 
 freebsd:
-	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
+	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
 
 bsd:
-	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
+	@$(MAKE) CC=gcc CFLAGS="-DBSD44 -m32 -O2 -pipe -fomit-frame-pointer -fno-stack-protector -Wunused-result -Wunused -Wno-implicit-function-declaration -I../include -fPIC" $(SO)
 
 cygwin:
 	@cd ../maple; make cygwin
 
 
 pip.so: $(OBJ)
-	gcc -shared $(OBJ) -o pip.so -L../lib -ldao
+	gcc -m32 -shared $(OBJ) -o pip.so -L../lib -ldao -Wl,-melf_i386
 
 
 install: $(SO)

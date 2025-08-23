@@ -11,23 +11,17 @@
 On your host machine:
 
 ```bash
-docker build -t easttownbbs .
+docker build --no-cache -t easttownbbs .
 ```
 
 ```bash
 docker run --rm -p 2323:23 -p 8080:80 -it easttownbbs
 ```
 
-Inside the docker:
-
-```bash
-./bootstrap.sh
-```
-
 On your host machine:
 
 ```bash
-telnet 127.0.0.1 23
+telnet 127.0.0.1 2323
 ```
 
 With your browser:
