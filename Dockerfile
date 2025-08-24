@@ -12,7 +12,7 @@ RUN dpkg --add-architecture i386 \
   && apt clean -y
 
 ENV BBSUID="9999" \
-    BBSGID="999" \
+    BBSGID="9999" \
     BBSUSER="bbs" \
     BBSGROUP="bbs" \
     BBSHOME="/home/bbs" \
