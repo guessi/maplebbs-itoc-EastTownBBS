@@ -77,6 +77,14 @@ main(argc, argv)
 {
   int i, mode;
 
+  /* Check if argc is at least 2 to avoid segfault when accessing argv[1] */
+  if (argc < 2) {
+    printf("Usage: %s UserID [UserID] ...\n", argv[0]);
+    printf("       %s -r UserID [UserID] ...\n", argv[0]);
+    return -1;
+  }
+
+  /* Now safe to check argv[1] since we know argc >= 2 */
   if (( strcmp("-r", argv[1]) && argc < 2) ||
       (!strcmp("-r", argv[1]) && argc < 3))
   {
