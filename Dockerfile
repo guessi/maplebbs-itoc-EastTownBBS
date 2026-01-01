@@ -29,7 +29,7 @@ ADD --chown=bbs:bbs ./bbs ${BBSHOME}
 USER bbs
 
 WORKDIR ${BBSHOME}/src
-RUN make linux install clean
+RUN make clean linux install
 
 WORKDIR ${BBSHOME}
 USER root
