@@ -6,22 +6,22 @@ $.ajaxSetup({
   cache : false
 });
 
-function checkURL(p) {
+const checkURL = (p) => {
   /* 0: not valid, 1: valid */
   return (typeof p != "undefined" && p.length > 0);
 }
 
-function highlight(pos) {
+const highlight = (pos) => {
   if (pos >= 0 && pos <= 19) {
     $("#curPos").val(pos);
-    $(".listitem:not(" + (pos + 1) + ")").removeClass('highlight');
+    $(".listitem:not(:nth-child(" + (pos + 1) + "))").removeClass('highlight');
     $(".listitem:nth-child(" + (pos + 1) + ")").addClass("highlight");
   }
 }
 
-function loadPage(next, pos) {
+const loadPage = (next, pos) => {
   if (pos >= 0 && pos <= 19) {
-    $("#content").load(next + " #content").ajaxComplete(function (e, xhr, settings) {
+    $("#content").load(next + " #content", () => {
       var loc = (next.charAt(0) == '?') ? (window.location.pathname + next) :
                 (next.charAt(0) == '/') ? (baseurl + next) : "";
       if (checkURL(loc)) {
@@ -32,7 +32,7 @@ function loadPage(next, pos) {
   }
 }
 
-function keyEventHandler(key) {
+const keyEventHandler = (key) => {
   var link = "";
   /* 1 ~ 20 */
   var ilen = $(".listitem").length;
@@ -44,13 +44,13 @@ function keyEventHandler(key) {
     loadPage("/brdlist", 1);
   } else if (key == 67 || key == 99) {
     /* class, [C:67], [c:99] */
-    $(location).attr("href", "/class");
+    window.location.href = "/class";
   } else if (key == 72 || key == 104) {
     /* hotboard, [M:72], [m:104] */
     loadPage("/hotboard", 1);
   } else if (key == 77 || key == 109) {
     /* home, [M:77], [m:109] */
-    $(location).attr("href", "/home");
+    window.location.href = "/home";
   } else if (key == 33) {
     /* [PgUp:33] */
     if (ilen > 0) {
@@ -105,7 +105,7 @@ function keyEventHandler(key) {
     if (!checkURL(link)) {
       return;
     }
-    $(location).attr("href", link);
+    window.location.href = link;
   } else if (key == 13 || key == 39) {
     /* [RETURN:13] */
     /* [RIGHT:39] */
@@ -147,12 +147,12 @@ function keyEventHandler(key) {
   }
 }
 
-$(function () {
+$(() => {
   /* highlight previous selected item */
   highlight(curr);
   /* order: keydown -> keypress -> keyup */
   /* A(65)~Z(90), a(97)~z(122) */
-  $(document).keypress(function (e) {
+  $(document).keypress((e) => {
     /* ctrl/alt/shift whould never happend at keyPress */
     var key = e.which ? e.which : (e.keyCode ? e.keyCode : 0);
     if (!keyEvent) {
@@ -160,8 +160,8 @@ $(function () {
     }
   });
   
-  $(document).keydown(function (e) {
-    var ctrlKey = e.CtrlKey;
+  $(document).keydown((e) => {
+    var ctrlKey = e.ctrlKey;
     var shiftKey = e.shiftKey;
     var altKey = e.altKey;
     if (ctrlKey || shiftKey || altKey) {
@@ -172,26 +172,25 @@ $(function () {
     keyEventHandler(key);
   });
   
-  $(document).keyup(function (e) {
+  $(document).keyup((e) => {
     /* restore */
     keyEvent = 0;
   });
   
   /* mouse move detection */
-  $(".listitem").hover(function () {
-    $(this).addClass('highlight')
-    curr = $(".listitem").index(this);
+  $(".listitem").hover((e) => {
+    $(".listitem").removeClass('highlight');
+    $(e.currentTarget).addClass('highlight');
+    curr = $(".listitem").index(e.currentTarget);
     $("#curPos").val(curr);
-  }, function () {
-    $(".listitem:not(" + curr + ")").removeClass('highlight');
   });
   
   /* permanent link */
-  $("#plink span input").click(function () {
-    $(this).focus().select();
+  $("#plink span input").click((e) => {
+    $(e.currentTarget).focus().select();
   });
   
-  $("#share").click(function () {
+  $("#share").click((e) => {
     if ($("#share .hidden").css("display") == "none") {
       $("#share .hidden").css("display", "block");
     } else {
@@ -201,22 +200,22 @@ $(function () {
 });
 
 /* Disappearing "Scroll to top" link with jQuery and CSS http://briancray.com/2009/10/06/scroll-to-top-link-jquery-css/ */
-$(function () {
+$(() => {
   var timer;
   var show = false;
   var $box = $('#message a');
   var $window = $(window);
-  var top = $(document.body).children(0).position().top;
+  var top = $(document.body).children().first().position().top;
   
-  $window.scroll(function () {
+  $window.scroll(() => {
     window.clearTimeout(timer);
-    timer = window.setTimeout(function () {
+    timer = window.setTimeout(() => {
         if ($window.scrollTop() <= top) {
           show = false;
           $box.fadeOut(500);
         } else if (show == false) {
           show = true;
-          $box.stop(true, true).show().click(function () {
+          $box.stop(true, true).show().click(() => {
             $box.fadeOut(500);
           });
         }
