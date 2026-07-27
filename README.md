@@ -1,5 +1,7 @@
 # MapleBBS-itoc-EastTownBBS
 
+[![docker-build](https://github.com/guessi/easttownbbs/actions/workflows/docker-build.yml/badge.svg)](https://github.com/guessi/easttownbbs/actions/workflows/docker-build.yml)
+
 **EastTown** 為 [國立東華大學](https://www.ndhu.edu.tw/) － [東方小城](http://bbs.ndhu.edu.tw) 之英文直譯，為 [MapleBBS-3.10-itoc](http://processor.tfcis.org/~itoc) 專案的衍生作品。
 
 ![](http://bbs.ndhu.edu.tw/link?frontpage.png)
@@ -16,6 +18,8 @@
 - **2012/Q3**：畢業離校，將維護版本開源至 GitHub
 - **2015/Q3**：增加 CentOS, Ubuntu, FreeBSD (32-bit) 支援
 - **2025/Q3**：升級至 Debian 13 (64-bit)，新增容器支援
+- **2026/Q1**：前端 jQuery 升級至 3.7.1，並進行 JS 程式碼清理與優化
+- **2026/Q3**：容器建置優化（image size 大幅縮減至 159.4MB）並進行容器現代化改造
 
 ## 功能限制
 
@@ -29,8 +33,10 @@
 ### 建置容器
 
 ```bash
-docker build --no-cache -t easttownbbs .
+docker build -t easttownbbs .
 ```
+
+> 建置採用 multi-stage，快取有效時重建很快；若需完整重建可加上 `--no-cache`。
 
 ### 啟動服務
 
@@ -59,9 +65,17 @@ telnet 127.0.0.1 2323
 http://127.0.0.1:8080
 ```
 
+### 例行排程
+
+容器內建 cron，排程定義於 `crontab.bbs`（佈署至 `/etc/cron.d/bbs`），
+預設僅啟用 `account`（人次統計）與 `camera`（動態看板）兩項例行工作。
+其餘項目（轉信、排行榜、文章 expire、備份等）以註解保留，
+若需啟用請一併確認 `docker-entrypoint.sh` 中對應元件已啟動。
+特別留意：容器時區為 UTC，每日排程的時間點請自行換算。
+
 ## 開發與維運困境
 
-雖然底層已更新為目前的 FreeBSD 最新版本，不過程式碼年久失修。即使可以運行，仍然可能存在瑕疵需要修正。
+雖然底層已從 FreeBSD (32-bit) 逐步更新至現在的 Debian 13 (64-bit) 不過程式碼年久失修。即使可以運行，仍然可能存在瑕疵需要修正。
 
 ### 主要挑戰
 
