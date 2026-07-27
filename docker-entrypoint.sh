@@ -33,5 +33,13 @@ su bbs -c '/home/bbs/bin/camera'
 echo "[debug] starting account ..."
 su bbs -c '/home/bbs/bin/account'
 
+shutdown() {
+    echo "[debug] caught SIGTERM/SIGINT, stopping bbsd ..."
+    kill "$(tail -1 /home/bbs/run/bbs.pid | awk '{print $1}')" 2>/dev/null
+    exit 0
+}
+trap shutdown TERM INT
+
 echo "[debug] sleep infinity to keep docker running"
-sleep infinity
+sleep infinity &
+wait $!
