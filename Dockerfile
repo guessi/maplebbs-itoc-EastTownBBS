@@ -9,7 +9,8 @@ RUN dpkg --add-architecture i386 \
       gcc-multilib \
       libc6-dev:i386 \
       make \
-  && apt clean -y
+  && apt clean -y \
+  && rm -rf /var/lib/apt/lists/*
 
 ENV BBSUID="9999" \
     BBSGID="9999" \
