@@ -6,6 +6,7 @@ FROM public.ecr.aws/docker/library/debian:13-slim AS base
 RUN dpkg --add-architecture i386 \
  && apt update \
  && apt install -y --no-install-recommends \
+      cron \
       gcc-multilib \
       libc6-dev:i386 \
       make \
@@ -35,6 +36,7 @@ WORKDIR ${BBSHOME}
 USER root
 
 COPY docker-entrypoint.sh .
+COPY crontab.bbs /etc/cron.d/bbs
 
 # bhttpd (port 80) is disabled by default, see docker-entrypoint.sh
 EXPOSE 23

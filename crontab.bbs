@@ -1,0 +1,34 @@
+# crontab for EastTownBBS container, installed to /etc/cron.d/bbs
+# schedule follows bbs/doc/doc/201_crontab.htm; entries for components
+# not enabled in docker-entrypoint.sh are kept commented for reference
+#
+# minute hour monthday month weekday user command
+
+# 每小時作一次人次統計及開票 (account 要在每小時 1-5 分跑)
+1 * * * * bbs /home/bbs/bin/account > /dev/null 2>&1
+# 每小時更新一次動態看板
+6 * * * * bbs /home/bbs/bin/camera > /dev/null 2>&1
+
+# 每小時對其他 BBS 及 news server 轉信五次 (需啟用 innbbsd)
+#10,22,34,46,58 * * * * bbs /home/bbs/innd/bbslink > /dev/null 2>&1
+# 每小時作一次話題統計
+#20 * * * * bbs /home/bbs/bin/poststat > /dev/null 2>&1
+# 每小時作一次歷史軌跡
+#25 * * * * bbs /home/bbs/bin/counter > /dev/null 2>&1
+# 每天做一次排行榜統計
+#28 3 * * * bbs /home/bbs/bin/topgem > /dev/null 2>&1
+#30 3 * * * bbs /home/bbs/bin/topsong > /dev/null 2>&1
+#32 3 * * * bbs /home/bbs/bin/topusr > /dev/null 2>&1
+# 每天根據 expire.conf 對看板文章作 expire
+#29 3 * * * bbs /home/bbs/bin/expire > /dev/null 2>&1
+# 每天對精華區作索引檔
+#40 3 * * * bbs /home/bbs/bin/gem-index > /dev/null 2>&1
+# 每天清理個人信箱
+#0 4 * * * bbs /home/bbs/bin/bquota > /dev/null 2>&1
+# 每星期清理久未上站使用者
+#50 3 * * 3 bbs /home/bbs/bin/reaper > /dev/null 2>&1
+# bbs 備份，分散於每週不同天
+#4 3 * * 2 bbs /home/bbs/bin/backupbrd > /dev/null 2>&1
+#4 3 * * 3 bbs /home/bbs/bin/backupgem > /dev/null 2>&1
+#4 3 * * 4 bbs /home/bbs/bin/backupusr > /dev/null 2>&1
+#4 3 * * 5 bbs /home/bbs/bin/backupoth > /dev/null 2>&1

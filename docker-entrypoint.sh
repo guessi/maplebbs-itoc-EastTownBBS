@@ -27,6 +27,9 @@ echo "[debug] starting bbsd ..."
 # echo "[debug] starting innbbsd ..."
 # /home/bbs/innd/innbbsd
 
+echo "[debug] starting cron (see /etc/cron.d/bbs) ..."
+cron
+
 echo "[debug] starting camera ..."
 su bbs -c '/home/bbs/bin/camera'
 
