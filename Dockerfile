@@ -20,12 +20,11 @@ ENV BBSUID="9999" \
     USRSHELL="/bin/bash"
 
 RUN groupadd -g ${BBSGID} ${BBSGROUP} \
- && groupmod -g ${BBSGID} ${BBSGROUP} \
- && useradd -m -u ${BBSUID} -g ${BBSGROUP} -s /bin/bash -p $(tr -dc A-Za-z0-9 </dev/urandom | head -c 16; echo) ${BBSUSER}
+ && useradd -m -u ${BBSUID} -g ${BBSGROUP} -s /bin/bash ${BBSUSER}
 
 FROM base
 
-ADD --chown=bbs:bbs ./bbs ${BBSHOME}
+COPY --chown=bbs:bbs ./bbs ${BBSHOME}
 
 USER bbs
 
@@ -35,6 +34,12 @@ RUN make clean linux install
 WORKDIR ${BBSHOME}
 USER root
 
-ADD docker-entrypoint.sh .
+COPY docker-entrypoint.sh .
+
+# bhttpd (port 80) is disabled by default, see docker-entrypoint.sh
+EXPOSE 23
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
+  CMD bash -c '</dev/tcp/127.0.0.1/23' || exit 1
 
 CMD ["./docker-entrypoint.sh"]
