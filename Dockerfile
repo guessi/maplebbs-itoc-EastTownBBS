@@ -3,16 +3,6 @@ FROM public.ecr.aws/docker/library/debian:13-slim AS base
 # special notes for i386 system
 # - https://www.debian.org/releases/stable/release-notes/issues.en.html#reduced-support-for-i386
 
-RUN dpkg --add-architecture i386 \
- && apt update \
- && apt install -y --no-install-recommends \
-      cron \
-      gcc-multilib \
-      libc6-dev:i386 \
-      make \
-  && apt clean -y \
-  && rm -rf /var/lib/apt/lists/*
-
 ENV BBSUID="9999" \
     BBSGID="9999" \
     BBSUSER="bbs" \
@@ -20,10 +10,19 @@ ENV BBSUID="9999" \
     BBSHOME="/home/bbs" \
     USRSHELL="/bin/bash"
 
-RUN groupadd -g ${BBSGID} ${BBSGROUP} \
+RUN dpkg --add-architecture i386 \
+ && groupadd -g ${BBSGID} ${BBSGROUP} \
  && useradd -m -u ${BBSUID} -g ${BBSGROUP} -s /bin/bash ${BBSUSER}
 
-FROM base
+FROM base AS builder
+
+RUN apt update \
+ && apt install -y --no-install-recommends \
+      gcc-multilib \
+      libc6-dev:i386 \
+      make \
+ && apt clean -y \
+ && rm -rf /var/lib/apt/lists/*
 
 COPY --chown=bbs:bbs ./bbs ${BBSHOME}
 
@@ -32,8 +31,19 @@ USER bbs
 WORKDIR ${BBSHOME}/src
 RUN make clean linux install
 
+FROM base
+
+RUN apt update \
+ && apt install -y --no-install-recommends \
+      cron \
+      libc6:i386 \
+      libcrypt1:i386 \
+ && apt clean -y \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder --chown=bbs:bbs ${BBSHOME} ${BBSHOME}
+
 WORKDIR ${BBSHOME}
-USER root
 
 COPY docker-entrypoint.sh .
 COPY crontab.bbs /etc/cron.d/bbs
