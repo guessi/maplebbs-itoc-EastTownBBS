@@ -1,9 +1,0 @@
-*.log
-*.o
-*.a
-bguard
-bhttpd
-bmtad
-bnntpd
-bpop3d
-gemd
