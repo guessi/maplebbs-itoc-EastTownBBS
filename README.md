@@ -39,7 +39,7 @@ docker build --no-cache -t easttownbbs .
 > 若需要資料留存，請務必記得修改相關配置，確保資料可以被留存。
 
 ```bash
-docker run --rm -p 2323:23 -p 8080:80 -it easttownbbs
+docker run --rm -p 2323:23 -it easttownbbs
 ```
 
 ### 連線方式
@@ -50,6 +50,11 @@ telnet 127.0.0.1 2323
 ```
 
 **網頁瀏覽**（唯讀模式）：
+
+容器預設僅啟動 Telnet 服務（`bbsd`），網頁服務（`bhttpd`）預設不啟動。
+若需啟用，請取消 `docker-entrypoint.sh` 中 `bhttpd` 的註解並重新建置，
+啟動容器時再加上 `-p 8080:80` 埠號對應：
+
 ```
 http://127.0.0.1:8080
 ```
