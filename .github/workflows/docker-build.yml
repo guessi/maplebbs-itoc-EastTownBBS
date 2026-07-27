@@ -1,0 +1,38 @@
+name: docker-build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build image
+        run: docker build -t easttownbbs .
+
+      - name: Smoke test
+        run: |
+          docker run -d --name easttownbbs -p 2323:23 easttownbbs
+
+          status=starting
+          for i in $(seq 1 12); do
+            status=$(docker inspect easttownbbs --format '{{.State.Health.Status}}')
+            [ "${status}" = "healthy" ] && break
+            sleep 5
+          done
+
+          docker logs easttownbbs
+          [ "${status}" = "healthy" ]
+
+      - name: Graceful shutdown test
+        run: |
+          start=$(date +%s)
+          docker stop easttownbbs
+          elapsed=$(( $(date +%s) - start ))
+          echo "docker stop took ${elapsed}s"
+          [ "${elapsed}" -lt 10 ]
